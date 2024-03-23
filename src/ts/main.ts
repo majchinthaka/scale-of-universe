@@ -288,9 +288,10 @@ loader.load(async (loader, resources) => {
     universe.onHandleClicked();
   }
 
-  window["setLang"] = async (btnClass, langIdx) => {
+  // window["setLang"] = async (btnClass, langIdx) => {
+  async function setLang()  {
     const textData = (
-      await (await fetch(`data/languages/l${langIdx}.txt`)).text()
+      await (await fetch(`data/languages/l0.txt`)).text()
     ).split("\n").map(x => x.replace(/\r?\n|\r/g, ''));
 
     const hqToggle:any = document.querySelector('#hqToggle');
@@ -319,7 +320,7 @@ loader.load(async (loader, resources) => {
     const btns:any = document.querySelectorAll('button.box');
 
     for (const button of btns) {
-      if (button.classList[1] !== btnClass) {
+      if (button.classList[1] !== 'a') {
         button.style.visibility = 'hidden';
       }
     }
@@ -386,7 +387,7 @@ loader.load(async (loader, resources) => {
     }
   };
 
-  
+  setLang()
 });
 
 // let loadingBar = new ldBar("#loadingBar");
